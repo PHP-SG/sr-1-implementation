@@ -1,24 +1,20 @@
 {
-    "name": "nyholm/psr7",
-    "description": "A fast PHP7 implementation of PSR-7",
+    "name": "psg/psr-100-implementation",
+    "description": "A fast PHP7 implementation of PSR-100",
     "license": "MIT",
-    "keywords": ["psr-7", "psr-17"],
-    "homepage": "https://tnyholm.se",
+    "keywords": ["psr-7", "psr-17", "psr-100"],
+    "homepage": "https://php-sg.org",
     "authors": [
         {
-            "name": "Tobias Nyholm",
-            "email": "tobias.nyholm@gmail.com"
-        },
-        {
-            "name": "Martijn van der Ven",
-            "email": "martijn@vanderven.se"
+            "name": "PHP-SG",
+            "homepage": "http://php-sg.org/"
         }
     ],
     "require": {
         "php": ">=7.1",
-        "psr/http-message": "^1.0",
         "php-http/message-factory": "^1.0",
-        "psr/http-factory": "^1.0"
+        "psr/http-message": "^1.0",
+        "psg/psr-100": "^0.1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5 || 8.5 || 9.4",
@@ -32,17 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nyholm\\Psr7\\": "src/"
+            "Psg\\Psr100\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\Nyholm\\Psr7\\": "tests/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.4-dev"
         }
     }
 }

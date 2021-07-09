@@ -1,9 +1,11 @@
 <?php
 
-namespace Tests\Nyholm\Psr7\Integration;
+declare(strict_types=1);
 
+namespace Tests\Psg\Psr100\Integration;
+
+use Psg\Psr100\Uri;
 use Http\Psr7Test\UriIntegrationTest;
-use Nyholm\Psr7\Uri;
 
 class UriTest extends UriIntegrationTest
 {

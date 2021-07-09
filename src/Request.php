@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\{RequestInterface, StreamInterface, UriInterface};
+use Psg\Psr100\Factory\RequestFactoryTrait;
+use Psg\Http\Message\{RequestInterface, StreamInterface, UriInterface};
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -15,6 +16,7 @@ use Psr\Http\Message\{RequestInterface, StreamInterface, UriInterface};
 class Request implements RequestInterface
 {
     use MessageTrait;
+    use RequestFactoryTrait;
     use RequestTrait;
 
     /**
@@ -41,7 +43,12 @@ class Request implements RequestInterface
 
         // If we got no body, defer initialization of the stream until Request::getBody()
         if ('' !== $body && null !== $body) {
-            $this->stream = Stream::create($body);
+            $this->stream = Stream::defaultCreate($body);
         }
+    }
+
+    public function create(string $method, $uri): RequestInterface
+    {
+        return $this->createRequest($method, $uri);
     }
 }

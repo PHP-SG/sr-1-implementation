@@ -1,9 +1,11 @@
 <?php
 
-namespace Tests\Nyholm\Psr7\Integration;
+declare(strict_types=1);
 
+namespace Tests\Psg\Psr100\Integration;
+
+use Psg\Psr100\Request;
 use Http\Psr7Test\RequestIntegrationTest;
-use Nyholm\Psr7\Request;
 
 class RequestTest extends RequestIntegrationTest
 {

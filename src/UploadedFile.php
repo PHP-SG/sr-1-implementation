@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\{StreamInterface, UploadedFileInterface};
+use Psg\Psr100\Factory\UploadedFileFactoryTrait;
+use Psg\Http\Message\{StreamInterface, UploadedFileInterface};
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7
@@ -15,6 +16,8 @@ use Psr\Http\Message\{StreamInterface, UploadedFileInterface};
  */
 class UploadedFile implements UploadedFileInterface
 {
+    use UploadedFileFactoryTrait;
+
     /** @var array */
     private const ERRORS = [
         \UPLOAD_ERR_OK => 1,
@@ -83,13 +86,18 @@ class UploadedFile implements UploadedFileInterface
             if (\is_string($streamOrFile)) {
                 $this->file = $streamOrFile;
             } elseif (\is_resource($streamOrFile)) {
-                $this->stream = Stream::create($streamOrFile);
+                $this->stream = Stream::defaultCreate($streamOrFile);
             } elseif ($streamOrFile instanceof StreamInterface) {
                 $this->stream = $streamOrFile;
             } else {
                 throw new \InvalidArgumentException('Invalid stream or file provided for UploadedFile');
             }
         }
+    }
+
+    public function create(StreamInterface $stream, int $size = null, int $error = \UPLOAD_ERR_OK, string $clientFilename = null, string $clientMediaType = null): UploadedFileInterface
+    {
+        return $this->createUploadedFile($stream, $size, $error, $clientFilename, $clientMediaType);
     }
 
     /**
@@ -115,7 +123,7 @@ class UploadedFile implements UploadedFileInterface
         }
 
         try {
-            return Stream::create(\fopen($this->file, 'r'));
+            return Stream::defaultCreate(\fopen($this->file, 'r'));
         } catch (\Throwable $e) {
             throw new \RuntimeException(\sprintf('The file "%s" cannot be opened.', $this->file));
         }
@@ -139,7 +147,7 @@ class UploadedFile implements UploadedFileInterface
 
             try {
                 // Copy the contents of a stream into another stream until end-of-file.
-                $dest = Stream::create(\fopen($targetPath, 'w'));
+                $dest = Stream::defaultCreate(\fopen($targetPath, 'w'));
             } catch (\Throwable $e) {
                 throw new \RuntimeException(\sprintf('The file "%s" cannot be opened.', $targetPath));
             }

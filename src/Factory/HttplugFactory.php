@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7\Factory;
+namespace Psg\Psr100\Factory;
 
+use Psg\Psr100\{Request, Response, Stream, Uri};
 use Http\Message\{MessageFactory, StreamFactory, UriFactory};
-use Nyholm\Psr7\{Request, Response, Stream, Uri};
-use Psr\Http\Message\UriInterface;
+use Psg\Http\Message\UriInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -28,7 +28,7 @@ class HttplugFactory implements MessageFactory, StreamFactory, UriFactory
 
     public function createStream($body = null)
     {
-        return Stream::create($body ?? '');
+        return Stream::defaultCreate($body ?? '');
     }
 
     public function createUri($uri = ''): UriInterface

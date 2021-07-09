@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\StreamInterface;
+use Psg\Psr100\Factory\StreamFactoryTrait;
+use Psg\Http\Message\StreamInterface;
 use Symfony\Component\Debug\ErrorHandler as SymfonyLegacyErrorHandler;
 use Symfony\Component\ErrorHandler\ErrorHandler as SymfonyErrorHandler;
 
@@ -17,6 +18,8 @@ use Symfony\Component\ErrorHandler\ErrorHandler as SymfonyErrorHandler;
  */
 class Stream implements StreamInterface
 {
+    use StreamFactoryTrait;
+
     /** @var resource|null A resource reference */
     private $stream;
 
@@ -55,6 +58,50 @@ class Stream implements StreamInterface
     {
     }
 
+    public function create(string $content = ''): StreamInterface
+    {
+        return self::defaultCreate($content);
+    }
+
+    public function createStream(string $content = ''): StreamInterface
+    {
+        return self::defaultCreate($content);
+    }
+
+    public function createFromFile(string $filename, string $mode = 'r'): StreamInterface
+    {
+        $this->createStreamFromFile($filename, $mode);
+    }
+
+    public function createFromResource($resource): StreamInterface
+    {
+        return self::createStreamFromResource($resource);
+    }
+
+    public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface
+    {
+        try {
+            $resource = @\fopen($filename, $mode);
+        } catch (\Throwable $e) {
+            throw new \RuntimeException(\sprintf('The file "%s" cannot be opened.', $filename));
+        }
+
+        if (false === $resource) {
+            if ('' === $mode || false === \in_array($mode[0], ['r', 'w', 'a', 'x', 'c'], true)) {
+                throw new \InvalidArgumentException(\sprintf('The mode "%s" is invalid.', $mode));
+            }
+
+            throw new \RuntimeException(\sprintf('The file "%s" cannot be opened.', $filename));
+        }
+
+        return self::defaultCreate($resource);
+    }
+
+    public function createStreamFromResource($resource): StreamInterface
+    {
+        return self::defaultCreate($resource);
+    }
+
     /**
      * Creates a new PSR-7 stream.
      *
@@ -62,7 +109,7 @@ class Stream implements StreamInterface
      *
      * @throws \InvalidArgumentException
      */
-    public static function create($body = ''): StreamInterface
+    public static function defaultCreate($body = ''): StreamInterface
     {
         if ($body instanceof StreamInterface) {
             return $body;
@@ -85,7 +132,7 @@ class Stream implements StreamInterface
             return $new;
         }
 
-        throw new \InvalidArgumentException('First argument to Stream::create() must be a string, resource or StreamInterface.');
+        throw new \InvalidArgumentException('First argument to Stream::defaultCreate() must be a string, resource or StreamInterface.');
     }
 
     /**

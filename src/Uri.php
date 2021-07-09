@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\UriInterface;
+use Psg\Psr100\Factory\UriFactoryTrait;
+use Psg\Http\Message\UriInterface;
 
 /**
  * PSR-7 URI implementation.
@@ -19,6 +20,8 @@ use Psr\Http\Message\UriInterface;
  */
 class Uri implements UriInterface
 {
+    use UriFactoryTrait;
+
     private const SCHEMES = ['http' => 80, 'https' => 443];
 
     private const CHAR_UNRESERVED = 'a-zA-Z0-9_\-\.~';
@@ -65,6 +68,16 @@ class Uri implements UriInterface
                 $this->userInfo .= ':' . $parts['pass'];
             }
         }
+    }
+
+    public function create(string $uri = ''): UriInterface
+    {
+        return new self($uri);
+    }
+
+    public function createUri(string $uri = ''): UriInterface
+    {
+        return new self($uri);
     }
 
     public function __toString(): string

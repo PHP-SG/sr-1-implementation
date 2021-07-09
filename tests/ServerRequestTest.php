@@ -1,13 +1,15 @@
 <?php
 
-namespace Tests\Nyholm\Psr7;
+declare(strict_types=1);
 
-use Nyholm\Psr7\ServerRequest;
-use Nyholm\Psr7\UploadedFile;
+namespace Tests\Psg\Psr100;
+
+use Psg\Psr100\ServerRequest;
+use Psg\Psr100\UploadedFile;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Nyholm\Psr7\ServerRequest
+ * @covers \Psg\Psr100\ServerRequest
  */
 class ServerRequestTest extends TestCase
 {
@@ -16,7 +18,7 @@ class ServerRequestTest extends TestCase
         $request1 = new ServerRequest('GET', '/');
 
         $files = [
-            'file' => new UploadedFile('test', 123, UPLOAD_ERR_OK),
+            'file' => new UploadedFile('test', 123, \UPLOAD_ERR_OK),
         ];
 
         $request2 = $request1->withUploadedFiles($files);

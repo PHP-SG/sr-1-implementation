@@ -1,12 +1,14 @@
 <?php
 
-namespace Tests\Nyholm\Psr7;
+declare(strict_types=1);
 
-use Nyholm\Psr7\Uri;
+namespace Tests\Psg\Psr100;
+
+use Psg\Psr100\Uri;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Nyholm\Psr7\Uri
+ * @covers \Psg\Psr100\Uri
  */
 class UriTest extends TestCase
 {
@@ -136,7 +138,7 @@ class UriTest extends TestCase
 
     public function testParseUriPortCanBeZero()
     {
-        if (version_compare(PHP_VERSION, '7.4.12') < 0) {
+        if (\version_compare(\PHP_VERSION, '7.4.12') < 0) {
             self::markTestSkipped('Skipping this on low PHP versions.');
         }
 

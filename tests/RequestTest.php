@@ -1,14 +1,16 @@
 <?php
 
-namespace Tests\Nyholm\Psr7;
+declare(strict_types=1);
 
-use Nyholm\Psr7\Request;
-use Nyholm\Psr7\Uri;
+namespace Tests\Psg\Psr100;
+
+use Psg\Psr100\Request;
+use Psg\Psr100\Uri;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\StreamInterface;
+use Psg\Http\Message\StreamInterface;
 
 /**
- * @covers \Nyholm\Psr7\Request
+ * @covers \Psg\Psr100\Request
  */
 class RequestTest extends TestCase
 {
@@ -207,14 +209,14 @@ class RequestTest extends TestCase
         $r = new Request(
             'GET', '', [
                      '200' => 'NumericHeaderValue',
-                     '0'   => 'NumericHeaderValueZero',
+                     '0' => 'NumericHeaderValueZero',
                  ]
         );
 
         $this->assertSame(
             [
                 '200' => ['NumericHeaderValue'],
-                '0'   => ['NumericHeaderValueZero'],
+                '0' => ['NumericHeaderValueZero'],
             ],
             $r->getHeaders()
         );
@@ -231,7 +233,7 @@ class RequestTest extends TestCase
         $this->assertSame(
             [
                 '200' => ['NumericHeaderValue', 'A', 'B'],
-                '0'   => ['NumericHeaderValueZero'],
+                '0' => ['NumericHeaderValueZero'],
                 '300' => ['NumericHeaderValue2'],
             ],
             $r->getHeaders()
@@ -241,7 +243,7 @@ class RequestTest extends TestCase
         $this->assertSame(
             [
                 '200' => ['NumericHeaderValue', 'A', 'B'],
-                '0'   => ['NumericHeaderValueZero'],
+                '0' => ['NumericHeaderValueZero'],
             ],
             $r->getHeaders()
         );

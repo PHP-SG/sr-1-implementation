@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\{ServerRequestInterface, StreamInterface, UploadedFileInterface, UriInterface};
+use Psg\Psr100\Factory\ServerRequestFactoryTrait;
+use Psg\Http\Message\{ServerRequestInterface, StreamInterface, UploadedFileInterface, UriInterface};
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7
@@ -17,6 +18,7 @@ class ServerRequest implements ServerRequestInterface
 {
     use MessageTrait;
     use RequestTrait;
+    use ServerRequestFactoryTrait;
 
     /** @var array */
     private $attributes = [];
@@ -63,8 +65,13 @@ class ServerRequest implements ServerRequestInterface
 
         // If we got no body, defer initialization of the stream until ServerRequest::getBody()
         if ('' !== $body && null !== $body) {
-            $this->stream = Stream::create($body);
+            $this->stream = Stream::defaultCreate($body);
         }
+    }
+
+    public function create(string $method, $uri, array $serverParams = []): ServerRequestInterface
+    {
+        return $this->createServerRequest($method, $uri, $serverParams);
     }
 
     public function getServerParams(): array

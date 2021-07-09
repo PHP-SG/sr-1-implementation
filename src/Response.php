@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Nyholm\Psr7;
+namespace Psg\Psr100;
 
-use Psr\Http\Message\{ResponseInterface, StreamInterface};
+use Psg\Psr100\Factory\ResponseFactoryTrait;
+use Psg\Http\Message\{ResponseInterface, StreamInterface};
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7
@@ -16,6 +17,7 @@ use Psr\Http\Message\{ResponseInterface, StreamInterface};
 class Response implements ResponseInterface
 {
     use MessageTrait;
+    use ResponseFactoryTrait;
 
     /** @var array Map of standard HTTP status code/reason phrases */
     private const PHRASES = [
@@ -39,14 +41,14 @@ class Response implements ResponseInterface
      * @param string $version Protocol version
      * @param string|null $reason Reason phrase (when empty a default will be used based on the status code)
      */
-    public function __construct(int $status = 200, array $headers = [], $body = null, string $version = '1.1', string $reason = null)
+    public function __construct($status = 200, array $headers = [], $body = null, string $version = '1.1', string $reason = null)
     {
         // If we got no body, defer initialization of the stream until Response::getBody()
         if ('' !== $body && null !== $body) {
-            $this->stream = Stream::create($body);
+            $this->stream = Stream::defaultCreate($body);
         }
 
-        $this->statusCode = $status;
+        $this->statusCode = (int)$status;
         $this->setHeaders($headers);
         if (null === $reason && isset(self::PHRASES[$this->statusCode])) {
             $this->reasonPhrase = self::PHRASES[$status];
@@ -55,6 +57,11 @@ class Response implements ResponseInterface
         }
 
         $this->protocol = $version;
+    }
+
+    public function create(int $code = 200, string $reasonPhrase = ''): ResponseInterface
+    {
+        return $this->createResponse($code, $reasonPhrase);
     }
 
     public function getStatusCode(): int
