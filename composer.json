@@ -14,7 +14,7 @@
         "php": ">=7.1",
         "php-http/message-factory": "^1.0",
         "psr/http-message": "^1.0",
-        "psg/psr-100": "^0.1.0"
+        "psg/psr-100": "^0.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5 || 8.5 || 9.4",
