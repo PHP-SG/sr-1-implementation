@@ -134,6 +134,15 @@ trait MessageTrait
 
         return $new;
     }
+    public function getBodyString(string $body){
+        return (string)$this->stream;
+    }
+    public function withBodyString(string $body){
+        $new = clone $this;
+        $new->stream = Stream::defaultCreate($body);
+
+        return $new;
+    }
 
     private function setHeaders(array $headers): void
     {
