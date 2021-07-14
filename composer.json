@@ -1,5 +1,5 @@
 {
-    "name": "psg/sr-1-implementation",
+    "name": "psg/sr1-implementation",
     "description": "A fast PHP7 implementation of SR-1",
     "license": "MIT",
     "keywords": ["sr-1"],
