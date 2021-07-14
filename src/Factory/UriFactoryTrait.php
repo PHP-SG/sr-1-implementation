@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\{Uri};
-use Psg\Http\Message\{UriInterface};
+use Psg\Sr1\Implementation\{Uri};
+use Psg\Sr1\{UriInterface};
 
 trait UriFactoryTrait
 {

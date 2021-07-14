@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\Stream;
-use Psg\Psr100\UploadedFile;
+use Psg\Sr1\Implementation\Stream;
+use Psg\Sr1\Implementation\UploadedFile;
 use PHPUnit\Framework\TestCase;
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\StreamInterface;
 
 /**
- * @covers \Psg\Psr100\UploadedFile
+ * @covers \Psg\Sr1\Implementation\UploadedFile
  */
 class UploadedFileTest extends TestCase
 {
@@ -173,7 +173,7 @@ class UploadedFileTest extends TestCase
      */
     public function testMoveRaisesExceptionForInvalidPath($path)
     {
-        $stream = (new \Psg\Psr100\Factory\Psr100Factory())->createStream('Foo bar!');
+        $stream = (new \Psg\Sr1\Implementation\Factory\Sr1Factory())->createStream('Foo bar!');
         $upload = new UploadedFile($stream, 0, \UPLOAD_ERR_OK);
 
         $this->cleanup[] = $path;
@@ -185,7 +185,7 @@ class UploadedFileTest extends TestCase
 
     public function testMoveCannotBeCalledMoreThanOnce()
     {
-        $stream = (new \Psg\Psr100\Factory\Psr100Factory())->createStream('Foo bar!');
+        $stream = (new \Psg\Sr1\Implementation\Factory\Sr1Factory())->createStream('Foo bar!');
         $upload = new UploadedFile($stream, 0, \UPLOAD_ERR_OK);
 
         $this->cleanup[] = $to = \tempnam(\sys_get_temp_dir(), 'diac');
@@ -199,7 +199,7 @@ class UploadedFileTest extends TestCase
 
     public function testCannotRetrieveStreamAfterMove()
     {
-        $stream = (new \Psg\Psr100\Factory\Psr100Factory())->createStream('Foo bar!');
+        $stream = (new \Psg\Sr1\Implementation\Factory\Sr1Factory())->createStream('Foo bar!');
         $upload = new UploadedFile($stream, 0, \UPLOAD_ERR_OK);
 
         $this->cleanup[] = $to = \tempnam(\sys_get_temp_dir(), 'diac');

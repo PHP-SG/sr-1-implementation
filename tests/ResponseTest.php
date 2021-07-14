@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\Response;
+use Psg\Sr1\Implementation\Response;
 use PHPUnit\Framework\TestCase;
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\StreamInterface;
 
 /**
- * @covers \Psg\Psr100\MessageTrait
- * @covers \Psg\Psr100\Response
+ * @covers \Psg\Sr1\Implementation\MessageTrait
+ * @covers \Psg\Sr1\Implementation\Response
  */
 class ResponseTest extends TestCase
 {
@@ -152,7 +152,7 @@ class ResponseTest extends TestCase
 
     public function testWithBody()
     {
-        $b = (new \Psg\Psr100\Factory\Psr100Factory())->createStream('0');
+        $b = (new \Psg\Sr1\Implementation\Factory\Sr1Factory())->createStream('0');
         $r = (new Response())->withBody($b);
         $this->assertInstanceOf(StreamInterface::class, $r->getBody());
         $this->assertSame('0', (string) $r->getBody());

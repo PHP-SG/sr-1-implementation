@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\{Request, Response, Stream, Uri};
+use Psg\Sr1\Implementation\{Request, Response, Stream, Uri};
 use Http\Message\{MessageFactory, StreamFactory, UriFactory};
-use Psg\Http\Message\UriInterface;
+use Psg\Sr1\UriInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

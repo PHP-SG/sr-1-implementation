@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\StreamInterface;
 
 /**
  * Trait implementing functionality common to requests and responses.
@@ -123,7 +123,7 @@ trait MessageTrait
         return $this->stream;
     }
 
-    public function withBody(\Psr\Http\Message\StreamInterface $body): self
+    public function withBody(\Psg\Sr1\StreamInterface $body): self
     {
         if ($body === $this->stream) {
             return $this;
@@ -134,10 +134,10 @@ trait MessageTrait
 
         return $new;
     }
-    public function getBodyString(string $body){
+    public function getBodyString(): string{
         return (string)$this->stream;
     }
-    public function withBodyString(string $body){
+    public function withBodyString(string $body): self{
         $new = clone $this;
         $new->stream = Stream::defaultCreate($body);
 

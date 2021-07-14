@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100\Factory;
+namespace Tests\Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\Factory\HttplugFactory;
+use Psg\Sr1\Implementation\Factory\HttplugFactory;
 use PHPUnit\Framework\TestCase;
-use Psg\Http\Message\StreamInterface;
-use Psg\Http\Message\UriInterface;
+use Psg\Sr1\StreamInterface;
+use Psg\Sr1\UriInterface;
 
 class HttplugFactoryTest extends TestCase
 {

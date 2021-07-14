@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\Request;
-use Psg\Psr100\Uri;
+use Psg\Sr1\Implementation\Request;
+use Psg\Sr1\Implementation\Uri;
 use PHPUnit\Framework\TestCase;
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\StreamInterface;
 
 /**
- * @covers \Psg\Psr100\Request
+ * @covers \Psg\Sr1\Implementation\Request
  */
 class RequestTest extends TestCase
 {

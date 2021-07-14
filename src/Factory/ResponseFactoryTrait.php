@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\{Response};
-use Psg\Http\Message\{ResponseInterface};
+use Psg\Sr1\Implementation\{Response};
+use Psg\Sr1\{ResponseInterface};
 
 trait ResponseFactoryTrait
 {

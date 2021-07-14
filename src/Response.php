@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Psr100\Factory\ResponseFactoryTrait;
-use Psg\Http\Message\{ResponseInterface, StreamInterface};
+use Psg\Sr1\Implementation\Factory\ResponseFactoryTrait;
+use Psg\Sr1\{ResponseInterface, StreamInterface};
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\Stream;
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\Implementation\Stream;
+use Psg\Sr1\StreamInterface;
 
 trait StreamFactoryTrait
 {

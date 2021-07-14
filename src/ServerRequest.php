@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Psr100\Factory\ServerRequestFactoryTrait;
-use Psg\Http\Message\{ServerRequestInterface, StreamInterface, UploadedFileInterface, UriInterface};
+use Psg\Sr1\Implementation\Factory\{RequestFactoryTrait, ServerRequestFactoryTrait};
+use Psg\Sr1\{ServerRequestInterface, StreamInterface, UploadedFileInterface, UriInterface};
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7
@@ -18,6 +18,7 @@ class ServerRequest implements ServerRequestInterface
 {
     use MessageTrait;
     use RequestTrait;
+    use RequestFactoryTrait;
     use ServerRequestFactoryTrait;
 
     /** @var array */

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\ServerRequest;
-use Psg\Psr100\UploadedFile;
+use Psg\Sr1\Implementation\ServerRequest;
+use Psg\Sr1\Implementation\UploadedFile;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Psg\Psr100\ServerRequest
+ * @covers \Psg\Sr1\Implementation\ServerRequest
  */
 class ServerRequestTest extends TestCase
 {

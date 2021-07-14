@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\Stream;
+use Psg\Sr1\Implementation\Stream;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ErrorHandler\ErrorHandler as SymfonyErrorHandler;
 
 /**
- * @covers \Psg\Psr100\Stream
+ * @covers \Psg\Sr1\Implementation\Stream
  */
 class StreamTest extends TestCase
 {

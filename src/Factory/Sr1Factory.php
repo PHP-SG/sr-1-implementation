@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Http\Message\{RequestFactoryInterface, ResponseFactoryInterface, ServerRequestFactoryInterface, StreamFactoryInterface, UploadedFileFactoryInterface, UriFactoryInterface};
+use Psg\Sr1\{RequestFactoryInterface, ResponseFactoryInterface, ServerRequestFactoryInterface, StreamFactoryInterface, UploadedFileFactoryInterface, UriFactoryInterface};
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -12,7 +12,7 @@ use Psg\Http\Message\{RequestFactoryInterface, ResponseFactoryInterface, ServerR
  *
  * @final This class should never be extended. See https://github.com/Nyholm/psr7/blob/master/doc/final.md
  */
-class Psr100Factory implements RequestFactoryInterface, ResponseFactoryInterface, ServerRequestFactoryInterface, StreamFactoryInterface, UploadedFileFactoryInterface, UriFactoryInterface
+class Sr1Factory implements RequestFactoryInterface, ResponseFactoryInterface, ServerRequestFactoryInterface, StreamFactoryInterface, UploadedFileFactoryInterface, UriFactoryInterface
 {
     use RequestFactoryTrait;
     use ResponseFactoryTrait;

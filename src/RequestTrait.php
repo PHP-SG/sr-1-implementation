@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Http\Message\UriInterface;
+use Psg\Sr1\UriInterface;
 
 /**
  * @author Michael Dowling and contributors to guzzlehttp/psr7
@@ -74,7 +74,7 @@ trait RequestTrait
         return $this->uri;
     }
 
-    public function withUri(\Psr\Http\Message\UriInterface $uri, $preserveHost = false): self
+    public function withUri(\Psg\Sr1\UriInterface $uri, $preserveHost = false): self
     {
         if ($uri === $this->uri) {
             return $this;

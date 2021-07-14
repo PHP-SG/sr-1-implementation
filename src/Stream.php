@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Psr100\Factory\StreamFactoryTrait;
-use Psg\Http\Message\StreamInterface;
+use Psg\Sr1\Implementation\Factory\StreamFactoryTrait;
+use Psg\Sr1\StreamInterface;
 use Symfony\Component\Debug\ErrorHandler as SymfonyLegacyErrorHandler;
 use Symfony\Component\ErrorHandler\ErrorHandler as SymfonyErrorHandler;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100;
+namespace Psg\Sr1\Implementation;
 
-use Psg\Psr100\Factory\UriFactoryTrait;
-use Psg\Http\Message\UriInterface;
+use Psg\Sr1\Implementation\Factory\UriFactoryTrait;
+use Psg\Sr1\UriInterface;
 
 /**
  * PSR-7 URI implementation.

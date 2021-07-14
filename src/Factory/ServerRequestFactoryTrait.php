@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Psg\Psr100\Factory;
+namespace Psg\Sr1\Implementation\Factory;
 
-use Psg\Psr100\{ServerRequest};
-use Psg\Http\Message\{ServerRequestInterface};
+use Psg\Sr1\Implementation\{ServerRequest};
+use Psg\Sr1\{ServerRequestInterface};
 
 trait ServerRequestFactoryTrait
 {

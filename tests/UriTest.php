@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Psg\Psr100;
+namespace Tests\Psg\Sr1\Implementation;
 
-use Psg\Psr100\Uri;
+use Psg\Sr1\Implementation\Uri;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Psg\Psr100\Uri
+ * @covers \Psg\Sr1\Implementation\Uri
  */
 class UriTest extends TestCase
 {
