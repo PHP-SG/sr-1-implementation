@@ -152,7 +152,7 @@ class ResponseTest extends TestCase
 
     public function testWithBody()
     {
-        $b = (new \Psg\Sr1\Implementation\Factory\Sr1Factory())->createStream('0');
+        $b = (new \Psg\Sr1\Implementation\Factory())->createStream('0');
         $r = (new Response())->withBody($b);
         $this->assertInstanceOf(StreamInterface::class, $r->getBody());
         $this->assertSame('0', (string) $r->getBody());

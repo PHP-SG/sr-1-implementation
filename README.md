@@ -7,7 +7,7 @@ composer require psg/sr1-implementation
 
 
 ```php
-$Factory = new \Psg\Sr1\Implementation\Factory\Sr1Factory;
+$Factory = new \Psg\Sr1\Implementation\Factory;
 $request = $Factory->createRequest('GET', 'http://tnyholm.se');
 $request = $request->withBodyString('{"name":"bob"}');
 ```

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Psg\Sr1\Implementation\Factory;
 
-use Psg\Sr1\Implementation\Factory\Sr1Factory;
+use Psg\Sr1\Implementation\Factory;
 use PHPUnit\Framework\TestCase;
 
 class Psr17FactoryTest extends TestCase
 {
     public function testCreateResponse()
     {
-        $factory = new Sr1Factory();
+        $factory = new Factory();
         $r = $factory->createResponse(200);
         $this->assertEquals('OK', $r->getReasonPhrase());
 
